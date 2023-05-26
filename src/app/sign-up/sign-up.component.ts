@@ -13,6 +13,6 @@ export class SignUpComponent {
   constructor() {}
 
   onSubmit(){
-    console.log(this.model.email + ' ' + this.model.firstname + ' ' + this.model.lastname + ' ' + this.model.password);
+    console.log(this.model);
   }
 }
