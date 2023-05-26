@@ -1,1 +1,76 @@
-<p>search-movie works!</p>
+<h1>RESEARCH MOVIE</h1>
+<div class="form">
+  <form [formGroup]="searchMovieForm" (ngSubmit)="onSubmit()">
+    <div formGroupName="userData">
+
+      <div>
+        <label for="loginInput">Identifiant</label>
+        <input type="text" id="loginInput" name="login" formControlName="login" >
+      </div>
+
+      <div *ngIf="login.touched && login.invalid && login.errors " class="error">
+        <ng-container  *ngIf="login.errors['required']">
+          L'identifiant ne peut pas être vide
+        </ng-container>
+      <ng-container *ngIf="login.errors?.['minlength']">
+        L'identifiant doit contenir plus de 2 lettres
+      </ng-container>
+      <ng-container *ngIf="login.errors?.['maxlength']">
+        L'identifiant doit contenir moins de 15 lettres
+      </ng-container>
+    </div>
+
+    <div>
+      <label for="titleInput">Titre</label>
+      <input type="text" id="titleInput" name="lastname" formControlName="title">
+    </div>
+
+    <div *ngIf="title.touched && title.invalid && title.errors " class="error">
+      <ng-container  *ngIf="title.errors['required']">
+        L'identifiant ne peut pas être vide
+      </ng-container>
+      <ng-container *ngIf="title.errors?.['minlength']">
+        L'identifiant doit contenir plus de 2 lettres
+      </ng-container>
+      <ng-container *ngIf="title.errors?.['maxlength']">
+        L'identifiant doit contenir moins de 15 lettres
+      </ng-container>
+    </div>
+
+  </div>
+
+
+    <div>
+      <label for="emailInput">E-mail</label>
+      <input type="email" id="emailInput"  name="email" email formControlName="email" >
+    </div>
+
+
+    <div *ngIf="email.touched && email.invalid && email.errors" class="error">
+      <ng-container *ngIf="email.errors['required']">
+          L' e-mail ne peut pas être vide
+      </ng-container>
+      <ng-container *ngIf="email.errors['email']">
+          L' e-mail est invalide
+      </ng-container>
+  </div>
+
+
+
+    <div>
+      <label for="passwordInput">Password</label>
+      <input type="password" id="passwordInput" formControlName="password">
+    </div>
+
+    <div *ngIf="password.touched && password.invalid" class="error">
+      <span>Le mot de passe ne peut pas être vide</span>
+    </div>
+
+    <div>
+      <button type="submit" ngModel #submit="ngModel"> Créer un compte !</button>
+    </div>
+
+
+
+  </form>
+</div>
