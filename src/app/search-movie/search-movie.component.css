@@ -1,0 +1,44 @@
+form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Style des boutons au survol */
+button:hover {
+  background-color: #45a049;
+}
+
+/* Style des messages d'erreur */
+.error {
+  color: red;
+}
+
+/* Style des messages de succès */
+.success {
+  color: green;
+}
+
+input.ng-invalid.ng-touched{
+  border : solid 1px red;
+}
+
