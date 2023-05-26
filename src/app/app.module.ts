@@ -8,13 +8,15 @@ import { UserComponent } from './user/user.component';
 
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SearchMovieComponent } from './search-movie/search-movie.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SignUpComponent,
-    UserComponent
+    UserComponent,
+    SearchMovieComponent
   ],
   imports: [
     BrowserModule,
