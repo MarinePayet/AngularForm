@@ -37,3 +37,8 @@ button:hover {
 .success {
   color: green;
 }
+
+input.ng-invalid.ng-touched{
+  border : solid 1px red;
+}
+
