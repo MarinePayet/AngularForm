@@ -1,22 +1,48 @@
-<p>sign-up works!</p>
 
-<form (ngSubmit)="onSubmit()" >
+<form #f="ngForm" (ngSubmit)="myForm.valid && onSubmit()" novalidate #myForm="ngForm" class="form">
   <div>
     <label for="">E-Mail</label>
-    <input type="email" name="email" [(ngModel)]="model.email">
+    <input type="email" name="email" [(ngModel)]="model.email" #email="ngModel" required email>
   </div>
+
+  <div *ngIf="email.errors && email.valid" class="error">
+    <span *ngIf="email.errors?.['required']">l'email est requis</span>
+    <span *ngIf="email.errors?.['email']">l'email est requis</span>
+  </div>
+  <br>
+
   <div>
     <label for="">Firstname</label>
-    <input type="text" name="firstname" [(ngModel)]="model.firstname">
+    <input type="text" name="firstname" [(ngModel)]="model.firstname" #firstname="ngModel" required minlength="2" maxlength="15" >
   </div>
+
+  <div *ngIf="firstname.errors && firstname.touched" class="error">
+    <span *ngIf="firstname.errors?.['required']">le prénom est requis</span>
+    <span *ngIf="firstname.errors?.['minlength']"> Veuillez entrer plus de 2 lettres. </span>
+  </div>
+  <br>
+
   <div>
     <label for="">Lastname</label>
-    <input type="text" name="lastname" [(ngModel)]="model.lastname">
+    <input type="text" name="lastname" [(ngModel)]="model.lastname" #lastname="ngModel" required minlength="2" maxlength="15" >
   </div>
+
+  <div *ngIf="lastname.errors && lastname.touched" class="error">
+    <span *ngIf="lastname.errors?.['required']">le nom est requis</span>
+    <span *ngIf="lastname.errors?.['minlength']"> Veuillez entrer plus de 2 lettres. </span>
+  </div>
+  <br>
+
+
   <div>
     <label for="">Password</label>
-    <input type="password" name="password" [(ngModel)]="model.password">
+    <input type="password" name="password" [(ngModel)]="model.password" #password="ngModel" required>
   </div>
+
+  <div *ngIf="password.errors && password.touched" class="error">
+    <span *ngIf="password.errors?.['required']">Veuillez entrer votre mot de passe</span>
+  </div>
+  <br>
 
   <button type="submit">Submit</button>
 
