@@ -6,6 +6,9 @@ form {
 input[type="text"],
 input[type="email"],
 input[type="password"],
+select[name="type"],
+select[name="fiche"],
+input[type="number"],
 textarea {
   width: 100%;
   padding: 10px;

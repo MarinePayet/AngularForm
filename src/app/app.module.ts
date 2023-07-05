@@ -9,6 +9,7 @@ import { UserComponent } from './user/user.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchMovieComponent } from './search-movie/search-movie.component';
+import { RangeDateDirective } from './range-date.directive';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { SearchMovieComponent } from './search-movie/search-movie.component';
     AppComponent,
     SignUpComponent,
     UserComponent,
-    SearchMovieComponent
+    SearchMovieComponent,
+    RangeDateDirective
   ],
   imports: [
     BrowserModule,

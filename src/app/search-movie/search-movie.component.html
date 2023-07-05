@@ -1,14 +1,14 @@
 <h1>RESEARCH MOVIE</h1>
 <div class="form">
-  <form [formGroup]="searchMovieForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="searchMovieForm"  (ngSubmit)="onSubmit()">
     <div formGroupName="userData">
-
+<!-- ____________________PARTIE IDENTIFIANT -->
       <div>
         <label for="loginInput">Identifiant</label>
         <input type="text" id="loginInput" name="login" formControlName="login" >
       </div>
 
-      <div *ngIf="login.touched && login.invalid && login.errors " class="error">
+      <!-- <div *ngIf="login.touched && login.invalid && login.errors " class="error">
         <ng-container  *ngIf="login.errors['required']">
           L'identifiant ne peut pas être vide
         </ng-container>
@@ -18,14 +18,21 @@
       <ng-container *ngIf="login.errors?.['maxlength']">
         L'identifiant doit contenir moins de 15 lettres
       </ng-container>
-    </div>
+    </div> -->
 
+<!-- ____________________PARTIE TITRE -->
     <div>
       <label for="titleInput">Titre</label>
       <input type="text" id="titleInput" name="lastname" formControlName="title">
     </div>
 
-    <div *ngIf="title.touched && title.invalid && title.errors " class="error">
+    <div *ngIf="identifierOrTitleRequired" class="error">
+
+      L'un des deux champs 'Identifiant' ou 'Titre' doit être renseigné.
+    </div>
+
+
+    <!-- <div *ngIf="title.touched && title.invalid && title.errors " class="error">
       <ng-container  *ngIf="title.errors['required']">
         L'identifiant ne peut pas être vide
       </ng-container>
@@ -35,11 +42,45 @@
       <ng-container *ngIf="title.errors?.['maxlength']">
         L'identifiant doit contenir moins de 15 lettres
       </ng-container>
-    </div>
+    </div> -->
 
+  </div>
+<!-- ____________________PARTIE TYPE -->
+  <select name="type" id="typeSelect" formControlName="type">
+    <option value="serie">Série</option>
+    <option value="film">Film</option>
+    <option value="episode">Épisode</option>
+  </select>
+
+  <!-- ____________________PARTIE FICHE -->
+  <select name="fiche" id="ficheSelect" formControlName="fiche">
+    <option value="short">Courte</option>
+    <option value="complete">Complète</option>
+  </select>
+
+<!-- ____________________PARTIE ANNEE DE SORTIE -->
+
+  <div>
+    <label for="yearInput">Année de sortie</label>
+    <input type="number" id="yearInput" name="year" formControlName="year" RangeDateDirective>
+  </div>
+
+  <div *ngIf="year.touched && year.invalid && year.errors" class="error">
+    <ng-container *ngIf="year.errors['required']">
+      L'année de sortie est requise
+    </ng-container>
+    <ng-container *ngIf="year.errors?.['min']">
+      L'année doit être supérieure ou égale à 1900
+    </ng-container>
+    <ng-container *ngIf="year.errors?.['max']">
+      L'année doit être inférieure ou égale à
+      <!-- L'année doit être inférieure ou égale à {{ currentYear }} -->
+    </ng-container>
   </div>
 
 
+
+<!-- ____________________PARTIE EMAIL -->
     <div>
       <label for="emailInput">E-mail</label>
       <input type="email" id="emailInput"  name="email" email formControlName="email" >
@@ -56,7 +97,6 @@
   </div>
 
 
-
     <div>
       <label for="passwordInput">Password</label>
       <input type="password" id="passwordInput" formControlName="password">
@@ -67,7 +107,7 @@
     </div>
 
     <div>
-      <button type="submit" ngModel #submit="ngModel"> Créer un compte !</button>
+      <button type="submit"> Créer un compte !</button>
     </div>
 
 
